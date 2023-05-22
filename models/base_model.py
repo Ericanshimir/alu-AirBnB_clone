@@ -36,7 +36,7 @@ class BaseModel:
         """
             Save the model instance to the storage engine
         """
-        self.updated_at = datetime.today()
+        self.updated_at = datetime.now()
         models.storage.save()
 
     def to_dict(self):
