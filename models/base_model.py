@@ -16,19 +16,19 @@ class BaseModel:
         """
             Initialize new 'BaseModel' instance
             Arguments:
-                *args (any): unused
-                **kwargs (dict): key/value pairs of attributes
+                *args (any): this will not be used.
+                **kwargs (dict): this will be used to get keyword arguments passed.
         """
-        tform = "%Y-%m-%dT%H:%M:%S.%f"
+        time_format = "%Y-%m-%dT%H:%M:%S.%f"
         self.id = str(uuid4())
         self.created_at = datetime.today()
         self.updated_at = datetime.today()
         if len(kwargs) != 0:
-            for k, v in kwargs.items():
-                if k == "created_at" or k == "updated_at":
-                    self.__dict__[k] = datetime.strptime(v, tform)
+            for key, value in kwargs.items():
+                if key == "created_at" or key == "updated_at":
+                    self.__dict__[key] = datetime.strptime(value, time_format)
                 else:
-                    self.__dict__[k] = v
+                    self.__dict__[key] = value
         else:
             models.storage.new(self)
 
@@ -43,15 +43,15 @@ class BaseModel:
         """
             Return dictionary representation of the model instance
         """
-        rdict = self.__dict__.copy()
-        rdict["created_at"] = self.created_at.isoformat()
-        rdict["updated_at"] = self.updated_at.isoformat()
-        rdict["__class__"] = self.__class__.__name__
-        return rdict
+        new_dict = self.__dict__.copy()
+        new_dict["created_at"] = self.created_at.isoformat()
+        new_dict["updated_at"] = self.updated_at.isoformat()
+        new_dict["__class__"] = self.__class__.__name__
+        return new_dict
 
     def __str__(self):
         """
             Return string representation of the model instance
         """
-        clname = self.__class__.__name__
-        return "[{}] ({}) {}".format(clname, self.id, self.__dict__)
+        class_name = self.__class__.__name__
+        return "[{}] ({}) {}".format(class_name, self.id, self.__dict__)
