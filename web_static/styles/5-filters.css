@@ -1,0 +1,50 @@
+.filters {
+  display: flex;
+  height: 70px;
+  width: 100%;
+  border: 1px solid #dddddd;
+  border-radius: 4px;
+  justify-content: space-around;
+  align-items: center;
+  color: white;
+}
+
+.locations {
+  border-right: 1px solid #dddddd;
+}
+
+button {
+  font-size: 18px;
+  background-color: #ff5a5f;
+  color: #ffffff;
+  height: 48px;
+  width: 20%;
+  border-radius: 4px;
+  position: relative;
+  left: 30px;
+  justify-content: flex-end;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+.locations,
+.amenities {
+  height: 100%;
+  width: 25%;
+  line-height: 50%;
+}
+
+.locations h3,
+.amenities h3 {
+  font-weight: 600;
+  color: #484848;
+}
+
+.locations h4,
+.amenities h4 {
+  font-size: 14px;
+  font-weight: 400;
+  color: #484848;
+}
